@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3ec">
+  <meta name="description" content="See eight common haircut patterns, locate the short area, compare transition heights, and practice one shape at a time.">
+  <title>Haircut Patterns — The Craft</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="learning.css">
+  <script src="haircut-patterns-data.js" defer></script>
+  <script src="haircut-walkthroughs-data.js" defer></script>
+  <script src="assets/new-image-manifest.js" defer></script>
+  <script src="learning-visuals.js" defer></script>
+  <script src="haircut-library-data.js" defer></script>
+  <script src="haircut-library-process.js" defer></script>
+  <script src="fade-training-data.js" defer></script>
+  <script src="lessons.js" defer></script>
+  <script src="app.js" defer></script>
+  <script src="haircut-patterns.js" defer></script>
+</head>
+<body data-page="patterns">
+  <a class="skip-link" href="#main">Skip to patterns</a>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="The Craft home"><span class="brand-symbol" aria-hidden="true">✳</span><span>THE CRAFT<small>HAIRCUTTING SCHOOL</small></span></a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="primary-nav"><span>Menu</span><span aria-hidden="true">☰</span></button>
+    <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="index.html#course-path">Course</a>
+      <a href="haircuts.html">Haircuts</a>
+      <a href="fade-training.html">Fade course</a>
+      <a href="haircut-simulator.html">Simulator</a>
+      <a href="practice.html#quick-practice-heading">Quick Practice</a>
+      <a href="quick-reference.html">Quick reference</a>
+    </nav>
+    <a class="header-link" href="lesson.html?lesson=setup">Start learning <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main class="page-width pattern-page" id="main">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">Haircut Patterns</span></nav>
+    <section class="page-intro pattern-intro" aria-labelledby="patterns-title">
+      <p class="eyebrow">VISUAL LEARNING</p>
+      <h1 id="patterns-title">Haircut <em>Patterns</em></h1>
+      <p>Learn the shape before you touch the clippers. Explore each profile, then follow a full haircut from consultation and head analysis to the finished cut.</p>
+    </section>
+
+    <section class="pattern-progress" aria-labelledby="pattern-progress-heading">
+      <div class="pattern-progress-copy"><div><p class="eyebrow">YOUR PATTERNS</p><h2 id="pattern-progress-heading"><span id="pattern-progress-count">0 of 8</span> understood</h2></div><p id="pattern-progress-note">Your checks save on this device.</p></div>
+      <div class="progress-track" role="progressbar" aria-label="Haircut patterns understood" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0"><span id="pattern-progress-fill"></span></div>
+    </section>
+
+    <section class="pattern-selector" aria-labelledby="pattern-selector-title">
+      <div class="section-heading pattern-section-heading">
+        <div><p class="eyebrow">CHOOSE A SHAPE</p><h2 id="pattern-selector-title" tabindex="-1">Start with one pattern.</h2></div>
+        <p>Course labels are learning guidance, not a universal rating. Start with the basics and work on a mannequin.</p>
+      </div>
+      <div id="pattern-groups" class="pattern-groups"></div>
+    </section>
+
+    <section class="additional-cut-section" aria-labelledby="additional-cut-title">
+      <div class="section-heading pattern-section-heading">
+        <div><p class="eyebrow">MORE COMPLETE CUTS</p><h2 id="additional-cut-title">Learn a different way to shape hair.</h2></div>
+        <p>Three full visual lessons extend the path into scissor work and short back-and-sides.</p>
+      </div>
+      <p><a class="text-link" href="haircuts.html">Explore all 22 haircut styles and their learning paths →</a></p><div class="additional-cut-grid" id="additional-cut-grid"></div>
+    </section>
+
+    <section class="pattern-viewer" id="pattern-lesson" aria-labelledby="pattern-lesson-title" hidden>
+      <div class="pattern-viewer-top">
+        <div><p class="eyebrow">GUIDED VISUAL LESSON</p><p class="pattern-viewer-position" id="pattern-viewer-position"></p></div>
+        <div class="pattern-viewer-actions"><button class="button button-secondary" id="open-full-cut" type="button">See every cutting step <span aria-hidden="true">→</span></button><button class="text-button viewer-close" id="close-pattern-lesson" type="button">Back to patterns</button></div>
+      </div>
+      <div class="pattern-viewer-heading">
+        <div><h2 id="pattern-lesson-title" tabindex="-1"></h2><p id="pattern-lesson-summary"></p></div>
+        <span id="pattern-level-badge" class="difficulty-badge"></span>
+      </div>
+
+      <div class="pattern-viewer-grid">
+        <div class="pattern-visual-column">
+          <div class="photo-view-switch" role="group" aria-label="Choose haircut photo angle">
+            <button type="button" data-photo-view="front" aria-pressed="true">Front 3/4</button>
+            <button type="button" data-photo-view="side" aria-pressed="false">Side</button>
+            <button type="button" data-photo-view="back" aria-pressed="false">Back</button>
+          </div>
+          <figure class="pattern-photo-stage" id="pattern-diagram-stage" aria-describedby="pattern-diagram-caption"></figure>
+          <p class="diagram-caption" id="pattern-diagram-caption"></p>
+        </div>
+        <div class="pattern-slide-copy" id="pattern-slide-copy" aria-live="polite"></div>
+      </div>
+
+      <nav class="pattern-slide-steps" id="pattern-slide-steps" aria-label="Lesson slides"></nav>
+      <div class="pattern-slide-controls">
+        <button class="button button-secondary" id="pattern-previous" type="button">← Previous</button>
+        <p class="slide-counter" id="pattern-slide-counter" aria-live="polite">1 / 6</p>
+        <button class="button button-primary" id="pattern-next" type="button">Next →</button>
+      </div>
+      <p class="pattern-safety"><span class="safety-mark" aria-hidden="true">!</span><span><strong>Practice safely.</strong> Keep tools controlled, protect the ears and neck, and rehearse the pattern on a mannequin before a full cut. Get supervision before trying advanced or skin-close work.</span></p>
+    </section>
+
+    <section class="cut-walkthrough-player" id="cut-walkthrough" aria-labelledby="cut-walkthrough-title" hidden>
+      <header class="cut-walkthrough-header">
+        <div><p class="eyebrow">FULL HAIRCUT PROCESS</p><h2 id="cut-walkthrough-title" tabindex="-1">Haircut lesson</h2><p id="cut-walkthrough-summary"></p></div>
+        <div class="cut-walkthrough-header-actions"><span id="cut-walkthrough-level" class="difficulty-badge"></span><button class="text-button" id="close-full-cut" type="button">Back to pattern</button></div>
+      </header>
+      <div class="cut-walkthrough-progress"><div><span class="eyebrow">YOUR PLACE</span><strong id="cut-step-counter" aria-live="polite">Step 1 of 16</strong></div><div class="progress-track" role="progressbar" aria-label="Walkthrough steps" aria-valuemin="1" aria-valuemax="16" aria-valuenow="1"><span id="cut-step-progress-fill"></span></div><span id="cut-completion-status"></span></div>
+      <p class="process-overview-label eyebrow">SEE THE WHOLE JOURNEY <span>Choose a photo to jump to that stage</span></p>
+      <nav class="cut-process-strip" id="cut-process-overview" aria-label="Haircut process photo timeline"></nav>
+      <div class="cut-step-layout">
+        <div class="cut-visual-column">
+        <figure class="cut-step-visual" id="cut-step-visual" aria-describedby="cut-step-caption"></figure>
+        <div class="cut-step-controls"><button class="button button-secondary" id="cut-step-previous" type="button">← Previous</button><p id="cut-step-position">1 / 16</p><button class="button button-primary" id="cut-step-next" type="button">Next step →</button></div>
+        <p class="cut-illustration-note">Training illustrations · study the sequence, then rehearse on a mannequin.</p>
+        </div>
+        <article class="cut-step-copy" aria-live="polite">
+          <p class="cut-step-kicker" id="cut-step-kicker"></p>
+          <h3 id="cut-step-title"></h3>
+          <p id="cut-step-detail" class="cut-step-detail"></p>
+          <p class="cut-tool-cue"><strong>TOOL</strong><span id="cut-step-tool"></span></p>
+          <section class="cut-step-action-panel" aria-labelledby="cut-step-action-title"><p class="eyebrow">WHAT TO DO</p><h4 id="cut-step-action-title">Work through this step</h4><ol id="cut-step-actions"></ol></section>
+          <aside class="cut-step-focus"><p class="eyebrow">LOOK FOR</p><p id="cut-step-focus-copy"></p></aside>
+          <div class="cut-step-practice"><span aria-hidden="true">↻</span><p><strong>Practice action</strong><br><span id="cut-step-practice-copy"></span></p></div>
+          <p class="cut-next-cue"><strong>Up next</strong><span id="cut-step-next-copy"></span></p>
+        </article>
+      </div>
+      <section class="cut-what-changed" id="cut-what-changed" hidden><p class="eyebrow">BEFORE → AFTER</p><h3>What changed?</h3><dl id="cut-what-changed-list"></dl></section>
+      <details class="cut-all-steps"><summary>All steps · jump to a specific action</summary><nav class="cut-step-rail" id="cut-step-rail" aria-label="Jump to a walkthrough step"></nav></details>
+      <label class="cut-complete-check" id="cut-complete-label" hidden><input id="cut-complete-toggle" type="checkbox"><span><strong>I have worked through this haircut.</strong><small>Save this full-cut lesson as complete on this device.</small></span></label>
+      <aside class="cut-walkthrough-safety"><span class="safety-mark" aria-hidden="true">!</span><p><strong>Practice at the right level.</strong> Begin on a mannequin or training swatch. Guard lengths and lever ranges vary by tool. Protect ears and neck, keep the first setting conservative, and ask an experienced barber for supervision before skin-close work or advanced blends.</p></aside>
+    </section>
+
+    <details class="pattern-reference" id="pattern-reference">
+      <summary><span>Quick visual references</span><small>Compare fade heights, taper and fade, guard lengths, and head zones</small></summary>
+      <div class="pattern-reference-content">
+        <section class="reference-module" aria-labelledby="height-compare-title">
+          <div class="reference-module-heading"><div><p class="eyebrow">FADE HEIGHT</p><h2 id="height-compare-title">Low, mid, or high?</h2></div><p>The shorter-to-longer transition moves higher up the sides.</p></div>
+          <div class="height-comparison" id="height-comparison"></div>
+        </section>
+        <section class="reference-module" aria-labelledby="taper-compare-title">
+          <div class="reference-module-heading"><div><p class="eyebrow">TWO DIFFERENT SHAPES</p><h2 id="taper-compare-title">Taper vs fade</h2></div><p>Look at how much of the side and back is shortened.</p></div>
+          <div class="taper-fade-comparison" id="taper-fade-comparison"></div>
+        </section>
+        <section class="reference-module" aria-labelledby="guard-reference-title">
+          <div class="reference-module-heading"><div><p class="eyebrow">CLIPPER GUARDS</p><h2 id="guard-reference-title">Short to longer</h2></div><p>These are approximate references. Guard length varies somewhat between clipper systems.</p></div>
+          <ol class="guard-reference-list">
+            <li><strong>#0.5</strong><span class="guard-hair" style="--guard-length: 12%"></span><span>≈ 1.5 mm</span></li>
+            <li><strong>#1</strong><span class="guard-hair" style="--guard-length: 20%"></span><span>≈ 3 mm</span></li>
+            <li><strong>#1.5</strong><span class="guard-hair" style="--guard-length: 29%"></span><span>≈ 4.5 mm</span></li>
+            <li><strong>#2</strong><span class="guard-hair" style="--guard-length: 40%"></span><span>≈ 6 mm</span></li>
+            <li><strong>#3</strong><span class="guard-hair" style="--guard-length: 65%"></span><span>≈ 10 mm</span></li>
+            <li><strong>#4</strong><span class="guard-hair" style="--guard-length: 82%"></span><span>≈ 13 mm</span></li>
+          </ol>
+          <p class="guard-note">Guard lengths vary somewhat by clipper system. Check your maker’s guide and test a guard on a mannequin or swatch; these are not universal specifications.</p>
+        </section>
+        <section class="reference-module" aria-labelledby="cutting-map-title">
+          <div class="reference-module-heading"><div><p class="eyebrow">A SIMPLE WAY TO READ THE HEAD</p><h2 id="cutting-map-title">Beginner cutting map</h2></div><p>Use these zones to understand length change, not as a one-size-fits-all cutting formula.</p></div>
+          <div class="beginner-map-layout"><figure class="beginner-map-stage" id="beginner-map-stage"></figure><ol class="zone-map-legend"><li><strong>1 · Shortest</strong><span>Where the cut is closest.</span></li><li><strong>2 · Blend</strong><span>The gradual transition.</span></li><li><strong>3 · Longer</strong><span>Hair above the blend.</span></li><li><strong>4 · Top</strong><span>Length set for the chosen style.</span></li></ol></div>
+          <p class="map-principle"><strong>Think:</strong> short → transition → longer. The chosen style and the head shape decide where each zone sits.</p>
+        </section>
+      </div>
+    </details>
+  </main>
+
+  <footer class="site-footer page-width"><a class="brand" href="index.html"><span class="brand-symbol" aria-hidden="true">✳</span><span>THE CRAFT<small>LEARN THE FUNDAMENTALS. MAKE THEM YOURS.</small></span></a><div class="footer-links"><a href="practice.html">Practice</a><a href="quick-reference.html">Quick reference</a></div><a class="back-top" href="#main">Back to top ↑</a></footer>
+  <noscript><p class="noscript-note">Turn on JavaScript to explore the pattern diagrams and save your progress.</p></noscript>
+</body>
+</html>
+

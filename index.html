@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3ec">
+  <meta name="description" content="Learn haircutting step by step with eight focused lessons, a safe practice plan, and simple progress tracking.">
+  <title>The Craft — learn haircutting step by step</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="learning.css">
+  <script src="haircut-patterns-data.js" defer></script>
+  <script src="haircut-walkthroughs-data.js" defer></script>
+  <script src="assets/new-image-manifest.js" defer></script>
+  <script src="learning-visuals.js" defer></script>
+  <script src="haircut-library-data.js" defer></script>
+  <script src="haircut-library-process.js" defer></script>
+  <script src="fade-training-data.js" defer></script>
+  <script src="lessons.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body data-page="home">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="The Craft home"><span class="brand-symbol" aria-hidden="true">✳</span><span>THE CRAFT<small>HAIRCUTTING SCHOOL</small></span></a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="primary-nav"><span>Menu</span><span aria-hidden="true">☰</span></button>
+    <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="index.html#course-path">Course</a>
+      <a href="haircuts.html">Haircuts</a>
+      <a href="fade-training.html">Fade course</a>
+      <a href="haircut-simulator.html">Simulator</a>
+      <a href="practice.html#quick-practice-heading">Quick Practice</a>
+      <a href="quick-reference.html">Quick reference</a>
+    </nav>
+    <a class="header-link" href="lesson.html?lesson=setup">Start learning <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="main">
+    <section class="hero page-width" aria-labelledby="home-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-mark"></span> A PRACTICAL GUIDE FOR COMPLETE BEGINNERS</p>
+        <h1 id="home-title">Learn haircutting,<br><em>one good step</em><br>at a time.</h1>
+        <p class="hero-lede">Learn the tools and haircut fundamentals, then follow complete visual cut lessons from the first consultation to the finished shape. Start on a mannequin and build control before you cut on a person.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" id="start-button" href="lesson.html?lesson=setup">Start the course <span aria-hidden="true">→</span></a>
+          <a class="button button-quiet" href="#course-path">See all 8 lessons</a>
+        </div>
+        <div class="hero-proof"><span>NO EXPERIENCE NEEDED</span><span class="proof-divider"></span><span>YOUR PROGRESS SAVES ON THIS DEVICE</span></div>
+      </div>
+      <div class="hero-visual">
+        <div class="visual-top"><span>FIELD NOTE 01</span><span>THE HEAD MAP</span></div>
+        <img class="hero-photo" src="assets/barber-head-shape.jpg" width="1536" height="1024" alt="Barber using a comb to assess the side and natural shape of a client's head before cutting." fetchpriority="high" decoding="async">
+        <div class="visual-foot"><span>01 — 03</span><span>SEE THE SHAPE BEFORE THE CUT</span></div>
+      </div>
+    </section>
+
+    <section class="learning-entry-links page-width" aria-label="Complete visual training"><a class="learning-entry-link" href="haircuts.html"><p class="eyebrow">22 STYLES · THREE LEARNING LEVELS</p><h2>Choose your next haircut.</h2><p>Compare the starting hair and finished angles, then learn the tools, head considerations and complete process.</p><strong>Explore the Haircut Library →</strong></a><a class="learning-entry-link" href="fade-training.html"><p class="eyebrow">TOOLS · SHAPE · THIRTY VISIBLE ACTIONS</p><h2>Learn how to do a fade.</h2><p>Study the lever and guards, follow seven fade processes, and build control with fourteen focused drills.</p><strong>Open the fade course →</strong></a><a class="learning-entry-link" href="haircut-simulator.html"><p class="eyebrow">MAKE THE NEXT CHOICE</p><h2>Play the Haircut Simulator.</h2><p>Choose a haircut, use the right tools and controls, and follow a visual process step by step.</p><strong>Start in Practice mode →</strong></a></section>
+    <section class="resume-wrap page-width" aria-labelledby="continue-heading">
+      <div class="resume-card">
+        <div class="resume-copy">
+          <p class="eyebrow">YOUR COURSE</p>
+          <h2 id="continue-heading">A clear next step.</h2>
+          <p id="continue-message">Start with a clean setup, then move through one practical skill at a time.</p>
+        </div>
+        <div class="resume-action">
+          <div class="resume-progress-label"><span id="lesson-count">0 of 8 lessons complete</span><span id="progress-percent">0%</span></div>
+          <div class="progress-track" role="progressbar" aria-label="Course progress" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0"><span id="progress-fill"></span></div>
+          <a class="button button-primary" id="continue-button" href="lesson.html?lesson=setup">Start lesson 1 <span aria-hidden="true">→</span></a>
+          <button class="text-button" id="reset-progress" type="button" hidden>Reset all progress</button>
+        </div>
+      </div>
+      <p class="resume-status" id="resume-status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="course-section page-width" id="course-path" aria-labelledby="course-heading">
+      <div class="section-heading">
+        <div><p class="eyebrow">THE LEARNING PATH</p><h2 id="course-heading">Eight lessons. One skill at a time.</h2></div>
+        <p>Go in order the first time. Come back to any lesson whenever you need a refresher.</p>
+      </div>
+      <div class="course-grid">
+        <a class="course-card" href="lesson.html?lesson=setup" data-course-card="setup"><span class="card-top"><span>LESSON 01</span><span data-lesson-status="setup">15 MIN</span></span><h3>Set up your station</h3><p>Tools, clean hands, and safe preparation.</p><span class="card-arrow" aria-hidden="true">↗</span></a>
+        <a class="course-card" href="lesson.html?lesson=consult" data-course-card="consult"><span class="card-top"><span>LESSON 02</span><span data-lesson-status="consult">15 MIN</span></span><h3>Agree on the haircut</h3><p>Listen, look, and make a clear plan.</p><span class="card-arrow" aria-hidden="true">↗</span></a>
+        <a class="course-card" href="lesson.html?lesson=foundations" data-course-card="foundations"><span class="card-top"><span>LESSON 03</span><span data-lesson-status="foundations">20 MIN</span></span><h3>Read the head</h3><p>Find landmarks and section the hair.</p><span class="card-arrow" aria-hidden="true">↗</span></a>
+        <a class="course-card" href="lesson.html?lesson=clipper" data-course-card="clipper"><span class="card-top"><span>LESSON 04</span><span data-lesson-status="clipper">20 MIN</span></span><h3>Control your clipper</h3><p>Understand guards, levers, and movement.</p><span class="card-arrow" aria-hidden="true">↗</span></a>
+        <a class="course-card" href="lesson.html?lesson=fade" data-course-card="fade"><span class="card-top"><span>LESSON 05</span><span data-lesson-status="fade">30 MIN</span></span><h3>Build a low fade</h3><p>Blend short bands with a light hand.</p><span class="card-arrow" aria-hidden="true">↗</span></a>
+        <a class="course-card" href="lesson.html?lesson=shears" data-course-card="shears"><span class="card-top"><span>LESSON 06</span><span data-lesson-status="shears">25 MIN</span></span><h3>Use shears and a comb</h3><p>Work in small sections with a steady guide.</p><span class="card-arrow" aria-hidden="true">↗</span></a>
+        <a class="course-card" href="lesson.html?lesson=finish" data-course-card="finish"><span class="card-top"><span>LESSON 07</span><span data-lesson-status="finish">15 MIN</span></span><h3>Check and finish</h3><p>Balance the shape; protect edges and ears.</p><span class="card-arrow" aria-hidden="true">↗</span></a>
+        <a class="course-card" href="lesson.html?lesson=review" data-course-card="review"><span class="card-top"><span>LESSON 08</span><span data-lesson-status="review">20 MIN</span></span><h3>Review and improve</h3><p>Pick a useful drill for your next cut.</p><span class="card-arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="next-steps page-width" aria-label="Keep learning">
+      <a class="next-card next-card-green" href="practice.html"><span class="eyebrow">BUILD A DAILY HABIT</span><h2>14-day practice plan</h2><p>Short drills that progress from setup to a first mannequin fade.</p><span class="next-link">Open the practice plan <span aria-hidden="true">→</span></span></a>
+      <a class="next-card next-card-light" href="quick-reference.html"><span class="eyebrow">FIND IT FAST</span><h2>Quick reference</h2><p>Look up guard basics, safety checks, and the fade sequence.</p><span class="next-link">Browse the reference <span aria-hidden="true">→</span></span></a>
+      <a class="next-card next-card-pattern" href="haircut-patterns.html"><span class="eyebrow">FOLLOW THE WHOLE CUT</span><h2>Haircut patterns</h2><p>See each style, then follow an image-led lesson from consultation through blending and finish.</p><span class="next-link">Explore haircut lessons <span aria-hidden="true">→</span></span></a>
+    </section>
+    <p class="learning-note page-width"><strong>A note on practice:</strong> This guide teaches fundamentals, not certification. Start on a mannequin. Work with a willing model only when the basics feel controlled; ask an experienced barber for help with techniques you have not learned.</p>
+  </main>
+
+  <footer class="site-footer page-width"><a class="brand" href="index.html"><span class="brand-symbol" aria-hidden="true">✳</span><span>THE CRAFT<small>LEARN THE FUNDAMENTALS. MAKE THEM YOURS.</small></span></a><div class="footer-links"><a href="practice.html">Practice</a><a href="quick-reference.html">Quick reference</a></div><a class="back-top" href="#main">Back to top ↑</a></footer>
+  <noscript><p class="noscript-note">Turn on JavaScript to load lesson content, save course progress, and use the practice checks and reference search.</p></noscript>
+</body>
+</html>
+

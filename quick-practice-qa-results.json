@@ -1,0 +1,18 @@
+{
+  "drills": 6,
+  "categoryCounts": [
+    "Foundation\n6",
+    "Clipper Control\n8",
+    "Fade Practice\n10",
+    "Taper Practice\n5",
+    "Scissor Practice\n9",
+    "Finishing\n6"
+  ],
+  "foundation": 6,
+  "clipper-control": 8,
+  "fade-practice": 10,
+  "taper-practice": 5,
+  "scissor-practice": 9,
+  "finishing": 6,
+  "progressPreserved": true
+}

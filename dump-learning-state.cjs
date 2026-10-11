@@ -1,0 +1,2 @@
+const {connect}=require('./learning-cdp.cjs');
+(async()=>{const c=await connect();await c.send('Page.navigate',{url:'http://127.0.0.1:8000/haircuts.html'});await new Promise(r=>setTimeout(r,700));console.log(JSON.stringify(await c.evaluate(`({cuts:THE_CRAFT_WALKTHROUGHS.filter(c=>['scissor-cut','scissor-over-comb','short-back-sides','buzz-cut','taper-fade'].includes(c.id)).map(c=>({id:c.id,steps:c.steps.map(s=>[s.key,s.title])})),assets:Object.keys(THE_CRAFT_NEW_ASSETS),profile:document.getElementById('haircut-profile').hidden})`)));c.close()})().catch(console.error);

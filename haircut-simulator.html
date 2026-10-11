@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#16221d">
+  <meta name="description" content="Practice haircutting in a lightweight interactive 3D barber simulator. Move the tools, change guards and see the hair change as you work.">
+  <title>3D Haircut Simulator — The Craft</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="haircut-simulator-3d.css">
+  <script src="haircut-simulator-3d-data.js" defer></script>
+  <script src="assets/character/makehuman-client-data.js" defer></script>
+  <script src="haircut-simulator-3d.js" defer></script>
+</head>
+<body class="barber-body" data-page="simulator">
+  <a class="skip-link" href="#barber-game">Skip to the 3D haircut simulator</a>
+  <header class="site-header barber-header">
+    <a class="brand" href="index.html" aria-label="The Craft home"><span class="brand-symbol" aria-hidden="true">✳</span><span>THE CRAFT<small>HAIRCUTTING SCHOOL</small></span></a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="primary-nav"><span>Menu</span><span aria-hidden="true">☰</span></button>
+    <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a><a href="index.html#course-path">Course</a><a href="haircuts.html">Haircuts</a><a href="fade-training.html">Fade course</a><a href="haircut-simulator.html" aria-current="page">Simulator</a><a href="practice.html#quick-practice-heading">Quick Practice</a><a href="quick-reference.html">Quick reference</a>
+    </nav>
+    <a class="header-link" href="lesson.html?lesson=setup">Start learning <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="barber-game" class="barber-game">
+    <div class="barber-topbar">
+      <div class="barber-title"><span class="eyebrow"><span class="eyebrow-mark"></span>INTERACTIVE BARBER PRACTICE</span><h1>Haircut <em>Simulator</em></h1></div>
+      <div class="barber-top-controls">
+        <label class="style-picker">HAIRCUT<select id="style-select" aria-label="Choose haircut"></select></label>
+        <div class="mode-switch" role="group" aria-label="Choose simulator mode"><button type="button" data-mode="guided" aria-pressed="true">Guided</button><button type="button" data-mode="challenge" aria-pressed="false" disabled title="Complete a Guided haircut to unlock">Skill check 🔒</button><button type="button" data-mode="free" aria-pressed="false">Free practice</button></div>
+        <button id="start-cut" class="barber-start" type="button">Start practice <span aria-hidden="true">→</span></button>
+      </div>
+    </div>
+
+    <section id="barber-stage" class="barber-stage" aria-label="3D barber workstation">
+      <canvas id="barber-canvas" tabindex="0" aria-label="Interactive haircut practice client. Right-click to use the selected tool, move the pointer over the head, and drag empty space to rotate." role="application"></canvas>
+      <div id="webgl-message" class="webgl-message" hidden><strong>3D scene unavailable</strong><span>This browser could not start WebGL. Try enabling hardware acceleration or opening the page in a modern browser.</span></div>
+      <div class="scene-vignette" aria-hidden="true"></div>
+
+      <div class="scene-hud scene-hud-left">
+        <p class="eyebrow" id="style-level">BEGINNER · GUIDED PRACTICE</p>
+        <h2 id="style-name">Buzz Cut</h2>
+        <div class="step-line"><span id="step-counter">Ready when you are</span><span id="mistake-count">0 mistakes</span></div>
+        <div class="scene-progress" role="progressbar" aria-label="Haircut progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="scene-progress-fill"></span></div>
+      </div>
+
+      <div class="scene-actions-top"><button type="button" id="show-me" class="scene-pill">Show me</button><button type="button" id="retry-step" class="scene-pill" hidden>Retry step</button><button type="button" id="sound-toggle" class="scene-pill" aria-pressed="false">Sound off</button><button type="button" id="pause-game" class="scene-pill">Pause · P</button><button type="button" id="reset-cut" class="scene-pill">Restart</button></div>
+
+      <div class="camera-controls" role="group" aria-label="Head camera views"><button type="button" data-camera="front" aria-pressed="true">Front</button><button type="button" data-camera="left" aria-pressed="false">Left</button><button type="button" data-camera="right" aria-pressed="false">Right</button><button type="button" data-camera="back" aria-pressed="false">Back</button><button type="button" data-camera="top" aria-pressed="false">Top</button><button type="button" data-camera="neckline" aria-pressed="false">Neckline</button></div>
+
+      <aside class="scene-coach" aria-live="polite" aria-atomic="true"><span class="coach-step" id="coach-step">CLIENT READY</span><strong id="coach-title">Choose a haircut to begin</strong><p id="coach-copy">Right-click to use the selected tool, move it over the hair to work, and drag empty space to rotate.</p><small id="coach-meta">The scene is a practice model; train real tool handling with supervision.</small></aside>
+
+      <div class="scene-feedback" id="scene-feedback" role="status" aria-live="polite"></div>
+      <div class="head-readout" aria-label="Hair length by side"><span>LEFT <b id="left-length">34 mm</b></span><span>RIGHT <b id="right-length">34 mm</b></span><span>BLEND <b id="blend-quality">—</b></span></div>
+      <p class="camera-hint" aria-label="Controls"><span>LEFT CLICK — SELECT / INTERACT</span><span>RIGHT CLICK — USE TOOL</span><span>MOUSE — MOVE TOOL</span><span>ESC / P — PAUSE</span></p>
+    </section>
+
+    <section class="tool-workbench" aria-label="Barber tools and settings">
+      <div class="tool-row">
+        <div class="tool-tray"><span class="workbench-label">TOOLS</span><button type="button" class="tool-button is-selected" data-tool="clipper"><span class="tool-symbol tool-symbol-clipper" aria-hidden="true"></span><span>Clipper</span></button><button type="button" class="tool-button" data-tool="trimmer"><span class="tool-symbol tool-symbol-trimmer" aria-hidden="true"></span><span>Trimmer</span></button><button type="button" class="tool-button" data-tool="razor"><span class="tool-symbol tool-symbol-razor" aria-hidden="true"></span><span>Razor</span></button><button type="button" class="tool-button" data-tool="scissors"><span class="tool-symbol tool-symbol-scissors" aria-hidden="true"></span><span>Shears</span></button><button type="button" class="tool-button" data-tool="comb"><span class="tool-symbol tool-symbol-comb" aria-hidden="true"></span><span>Comb</span></button><button type="button" class="tool-button" data-tool="spray"><span class="tool-symbol tool-symbol-spray" aria-hidden="true"></span><span>Spray</span></button><button type="button" class="tool-button" data-tool="brush"><span class="tool-symbol tool-symbol-brush" aria-hidden="true"></span><span>Brush</span></button></div>
+        <div id="clipper-settings" class="clipper-settings">
+          <div class="setting-group"><span class="workbench-label">GUARD</span><div class="guard-row"><div id="guard-options" class="segmented-control guard-options" role="group" aria-label="Clipper guard"></div><button id="guard-attach" class="guard-attach" type="button" aria-pressed="false">Attach #3</button></div></div>
+          <div class="setting-group"><span class="workbench-label">LEVER</span><div id="lever-options" class="segmented-control lever-options" role="group" aria-label="Clipper lever"><button type="button" data-lever="closed" aria-pressed="true">Closed</button><button type="button" data-lever="half" aria-pressed="false">Half</button><button type="button" data-lever="open" aria-pressed="false">Open</button></div></div>
+        </div>
+        <div id="shear-settings" class="shear-settings" hidden><label class="setting-group shear-length"><span class="workbench-label">CUT LENGTH <b id="shear-length-label">25 mm</b></span><input id="shear-length" type="range" min="8" max="60" value="25"></label><button type="button" id="comb-ready" class="comb-ready" aria-pressed="false">Sweep comb over hair</button></div>
+      </div>
+      <div class="workbench-bottom"><span id="selected-tool-copy">Clipper · guard #3 · lever closed</span><span id="interaction-copy">Right-click to use the selected tool; move the pointer across the hair to work.</span><strong id="tool-status" class="tool-status" data-state="idle" aria-live="polite">CLIPPER — OFF</strong><button id="pick-up-tool" type="button" class="pick-up-tool" aria-pressed="false">Pick up clipper</button><button id="finish-cut" type="button" class="finish-cut" disabled>Inspect &amp; finish</button></div>
+    </section>
+    <p class="sim-safety"><strong>Practice model only.</strong> Real cutting needs controlled tools, ear and neck protection, and supervised practice.</p>
+
+    <aside id="free-settings" class="game-modal" hidden aria-labelledby="free-title"><div class="modal-scrim" data-close-modal></div><section class="modal-card"><button type="button" class="modal-close" data-close-modal aria-label="Close free practice settings">×</button><p class="eyebrow">OPEN SANDBOX</p><h2 id="free-title">Set up free practice</h2><p>Choose a head and starting length. Then use any tool, guard and area without a step sequence.</p><div class="free-fields"><label>Practice target<select id="free-target"></select></label><label>Head shape<select id="head-shape"><option value="oval">Oval</option><option value="round">Round</option><option value="square">Square</option><option value="oblong">Oblong</option><option value="diamond">Diamond</option><option value="heart">Heart</option></select></label><label>Starting hair length<select id="starting-length"><option value="18">Short · 18 mm</option><option value="28" selected>Medium · 28 mm</option><option value="42">Long · 42 mm</option></select></label><label>Start with<select id="free-tool"><option value="clipper">Clipper</option><option value="trimmer">Trimmer</option><option value="razor">Razor</option><option value="scissors">Shears</option><option value="comb">Comb</option><option value="spray">Spray bottle</option><option value="brush">Neck brush</option></select></label><label>Guard<select id="free-guard"><option>No guard</option><option>#0.5</option><option>#1</option><option>#1.5</option><option>#2</option><option selected>#3</option><option>#4</option></select></label></div><div class="modal-actions"><button type="button" class="button button-secondary" data-close-modal>Cancel</button><button type="button" class="button button-primary" id="start-free">Enter free practice</button></div></section></aside>
+
+    <aside id="pause-menu" class="game-modal pause-menu" hidden aria-labelledby="pause-title"><div class="modal-scrim"></div><section class="modal-card pause-card" role="dialog" aria-modal="true"><p class="eyebrow">SESSION ON HOLD</p><h2 id="pause-title">Paused</h2><p class="pause-summary">Your scene and haircut are saved exactly where you left them.</p><div id="pause-home" class="pause-actions"><button type="button" class="pause-action pause-primary" id="resume-game">Resume <span>ESC / P</span></button><button type="button" class="pause-action" id="restart-paused">Restart haircut</button><button type="button" class="pause-action" id="pause-show-controls">Controls</button><button type="button" class="pause-action" id="pause-show-settings">Settings</button><button type="button" class="pause-action pause-quit" id="quit-selection">Quit to haircut selection</button></div><div id="pause-controls-panel" class="pause-info" tabindex="-1" hidden><strong>Controls</strong><p><b>Rotate</b> Drag empty space around the client.</p><p><b>Zoom</b> Scroll or pinch. Choose a camera preset for a quick view.</p><p><b>Move tool</b> Move the pointer over the head surface.</p><p><b>Use tool</b> Right-click. Clippers and trimmers toggle; other tools work while held.</p><p><b>Pause / resume</b> ESC or P at any time.</p><button type="button" class="button button-secondary" data-pause-back>Back</button></div><div id="pause-settings-panel" class="pause-info" tabindex="-1" hidden><strong>Settings</strong><label class="pause-setting">Camera sensitivity <input id="camera-sensitivity" type="range" min="4" max="16" value="9"></label><button type="button" class="button button-secondary" id="pause-sound-toggle" aria-pressed="false">Sound off</button><button type="button" class="button button-secondary" data-pause-back>Back</button></div></section></aside>
+
+    <aside id="result-panel" class="result-overlay" hidden aria-labelledby="result-title"><section class="result-card"><p class="eyebrow">SESSION REVIEW</p><h2 id="result-title">Haircut complete</h2><p id="result-style"></p><div class="result-scores" id="result-scores"></div><p id="result-note" class="result-note"></p><div class="modal-actions"><button type="button" class="button button-secondary" id="result-again">Practice again</button><button type="button" class="button button-primary" id="result-another">Choose another haircut</button></div></section></aside>
+  </main>
+
+  <footer class="site-footer page-width barber-footer"><a class="brand" href="index.html"><span class="brand-symbol" aria-hidden="true">✳</span><span>THE CRAFT<small>LEARN THE FUNDAMENTALS. MAKE THEM YOURS.</small></span></a><div class="footer-links"><a href="practice.html#quick-practice-heading">Quick Practice</a><a href="quick-reference.html">Quick reference</a></div><a class="back-top" href="#barber-game">Back to top ↑</a></footer>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3ec">
+  <meta name="description" content="A focused beginner haircutting lesson with clear steps, a practical drill, and a knowledge check.">
+  <title>Lesson — The Craft</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="learning.css">
+  <script src="haircut-patterns-data.js" defer></script>
+  <script src="haircut-walkthroughs-data.js" defer></script>
+  <script src="assets/new-image-manifest.js" defer></script>
+  <script src="learning-visuals.js" defer></script>
+  <script src="haircut-library-data.js" defer></script>
+  <script src="haircut-library-process.js" defer></script>
+  <script src="fade-training-data.js" defer></script>
+  <script src="lessons.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body data-page="lesson">
+  <a class="skip-link" href="#main">Skip to lesson</a>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="The Craft home"><span class="brand-symbol" aria-hidden="true">✳</span><span>THE CRAFT<small>HAIRCUTTING SCHOOL</small></span></a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="primary-nav"><span>Menu</span><span aria-hidden="true">☰</span></button>
+    <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="index.html#course-path">Course</a>
+      <a href="haircuts.html">Haircuts</a>
+      <a href="fade-training.html">Fade course</a>
+      <a href="haircut-simulator.html">Simulator</a>
+      <a href="practice.html#quick-practice-heading">Quick Practice</a>
+      <a href="quick-reference.html">Quick reference</a>
+    </nav>
+    <a class="header-link" href="lesson.html?lesson=setup">Start learning <span aria-hidden="true">↗</span></a>
+  </header>
+  <main class="page-width lesson-page" id="main">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><a href="index.html#course-path">Course</a><span aria-hidden="true">/</span><span id="breadcrumb-current" aria-current="page">Lesson</span></nav>
+    <div class="lesson-layout" id="lesson-layout">
+      <article class="lesson-main" aria-labelledby="lesson-title">
+        <header class="lesson-heading">
+          <p class="eyebrow" id="lesson-eyebrow">YOUR LESSON</p>
+          <h1 id="lesson-title">Loading lesson...</h1>
+          <p class="lesson-intro" id="lesson-intro"></p>
+          <div class="lesson-meta-row"><span id="lesson-duration"></span><span>BEGINNER LEVEL</span><span id="lesson-step-count"></span></div>
+        </header>
+        <section class="outcomes lesson-panel" aria-labelledby="outcomes-heading">
+          <h2 id="outcomes-heading">What you will learn</h2>
+          <ul id="lesson-outcomes" class="outcome-list"></ul>
+        </section>
+        <section class="lesson-panel prep-panel" aria-labelledby="prep-heading">
+          <h2 id="prep-heading">Get ready</h2>
+          <ul id="lesson-tools" class="compact-list"></ul>
+        </section>
+        <div id="lesson-sections"></div>
+        <aside class="safety-callout" id="lesson-safety" aria-labelledby="safety-heading">
+          <span class="safety-icon" aria-hidden="true">!</span><div><h2 id="safety-heading">Keep it safe</h2><p id="safety-copy"></p></div>
+        </aside>
+        <section class="lesson-panel quiz-panel" aria-labelledby="quiz-heading">
+          <p class="eyebrow">CHECK YOUR UNDERSTANDING</p>
+          <h2 id="quiz-heading">Quick knowledge check</h2>
+          <form id="lesson-quiz">
+            <fieldset><legend id="quiz-question"></legend><div class="quiz-options" id="quiz-options"></div></fieldset>
+            <button class="button button-secondary" type="submit">Check answer <span aria-hidden="true">→</span></button>
+            <p class="quiz-feedback" id="quiz-feedback" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+        <section class="complete-panel" aria-labelledby="complete-heading">
+          <div><p class="eyebrow">YOUR PROGRESS</p><h2 id="complete-heading">Done with this lesson?</h2><p id="complete-copy">Mark it complete when you have worked through the steps and practice drill.</p></div>
+          <button class="button button-primary" type="button" id="complete-lesson">Mark lesson complete <span aria-hidden="true">✓</span></button>
+        </section>
+        <nav class="lesson-next-prev" aria-label="Lesson navigation">
+          <a id="previous-lesson" class="lesson-nav-link lesson-prev" href="index.html#course-path"><span class="nav-caption">PREVIOUS</span><span id="previous-title">Course overview</span></a>
+          <a id="next-lesson" class="lesson-nav-link lesson-next" href="practice.html"><span class="nav-caption">NEXT STEP</span><span id="next-title">Practice plan</span><span class="next-arrow" aria-hidden="true">→</span></a>
+        </nav>
+      </article>
+      <aside class="lesson-sidebar" aria-label="Course progress and lesson list">
+        <section class="side-progress">
+          <p class="eyebrow">YOUR COURSE</p><p class="side-progress-count"><strong id="side-lesson-count">0</strong><span>of 8 lessons<br>complete</span></p>
+          <div class="progress-track" role="progressbar" aria-label="Course progress" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0"><span id="side-progress-fill"></span></div>
+          <a href="index.html#course-path" class="side-text-link">View the course overview →</a>
+        </section>
+        <details class="course-map">
+          <summary>Course outline <span id="map-total">8 lessons</span></summary>
+          <nav aria-label="Course lessons"><ol id="lesson-map"></ol></nav>
+        </details>
+      </aside>
+    </div>
+    <div class="lesson-error" id="lesson-error" hidden><h1>We could not find that lesson.</h1><p>Return to the course overview and choose a lesson from the list.</p><a class="button button-primary" href="index.html#course-path">View all lessons <span aria-hidden="true">→</span></a></div>
+  </main>
+  <footer class="site-footer page-width"><a class="brand" href="index.html"><span class="brand-symbol" aria-hidden="true">✳</span><span>THE CRAFT<small>LEARN THE FUNDAMENTALS. MAKE THEM YOURS.</small></span></a><div class="footer-links"><a href="practice.html">Practice</a><a href="quick-reference.html">Quick reference</a></div><a class="back-top" href="index.html">Course home ↑</a></footer>
+  <noscript><p class="noscript-note">Turn on JavaScript to load lessons and save progress.</p></noscript>
+</body>
+</html>
+
+
